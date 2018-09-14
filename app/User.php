@@ -28,7 +28,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function rewards()
+    public function rewardCategories()
     {
       return $this->hasMany(RewardCategory::class);
     }

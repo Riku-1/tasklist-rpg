@@ -14,10 +14,11 @@ class CreateRewardsTable extends Migration
     public function up()
     {
         Schema::create('reward_categories', function (Blueprint $table) {
-            $table->increments('reward_id');
+            $table->increments('id');
             $table->integer('user_id')->unsigned()->index;
             $table->string('reward_name', 50);
-            $table->integer('rarity')->default(1);
+            $table->integer('rarity')->unsigned()->default(0);
+            $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
         });

@@ -13,7 +13,7 @@ class CreateRewardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rewards', function (Blueprint $table) {
+        Schema::create('reward_categories', function (Blueprint $table) {
             $table->increments('reward_id');
             $table->integer('user_id')->unsigned()->index;
             $table->string('reward_name', 50);
@@ -30,6 +30,6 @@ class CreateRewardsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rewards');
+        Schema::dropIfExists('reward_categories');
     }
 }

@@ -30,6 +30,6 @@ class User extends Authenticatable
 
     public function rewards()
     {
-      return $this->hasMany(Reward::class);
+      return $this->hasMany(RewardCategory::class);
     }
 }

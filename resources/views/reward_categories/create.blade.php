@@ -8,8 +8,8 @@
 
     <div class="form-row align-items-center">
       <div class="col-auto my-1">
-        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">レアリティ</label>
-        <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+        <label class="my-1 mr-2" for="rarity_select">レアリティ</label>
+        <select class="custom-select my-1 mr-sm-2" id="rarity_select" name="rarity">
           <option value="0" selected>C</option>
           <option value="1">B</option>
           <option value="2">A</option>

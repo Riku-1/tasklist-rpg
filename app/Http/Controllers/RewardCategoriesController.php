@@ -16,7 +16,7 @@ class RewardCategoriesController extends Controller
 
         $data = [
           'user' => $user,
-          'rewardcategories' => $reward_categories,
+          'reward_categories' => $reward_categories,
         ];
         return view('reward_categories.index', $data);
       }else {
@@ -45,6 +45,6 @@ class RewardCategoriesController extends Controller
         'rarity' => $request->rarity,
       ]);
 
-      return redirect()->route(reward_categories.index);
+      return redirect()->route('reward_categories.index');
     }
 }

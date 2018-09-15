@@ -17,24 +17,26 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>ゲーム１時間</td>
-        <td>C</td>
-        <td>
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-dark active">
-              <input type="radio" name="options" id="enabled" autocomplete="off" checked>有効
-            </label>
-            <label class="btn btn-dark">
-              <input type="radio" name="options" id="disabled" autocomplete="off">無効
-            </label>
-          </div>
-        </td>
-        <td>
-          aaa
-        </td>
-        <td> <button type="button" name="button">－</button> </td>
-      </tr>
+      @foreach ($reward_categories as $reward_category)
+        <tr>
+          <td>{{ $reward_category->reward_name }}</td>
+          <td>{{ $reward_category->convertRarityValueIntoChar() }}</td>
+          <td>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-dark active">
+                <input type="radio" name="options" id="enabled" autocomplete="off" checked>有効
+              </label>
+              <label class="btn btn-dark">
+                <input type="radio" name="options" id="disabled" autocomplete="off">無効
+              </label>
+            </div>
+          </td>
+          <td>
+            編集
+          </td>
+          <td> <button type="button" name="button">－</button> </td>
+        </tr>
+      @endforeach
     </tbody>
   </table>
 

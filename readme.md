@@ -68,3 +68,11 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 - **アイテムや報酬設定にソート機能をつける**
 - **検索機能もつける（後回し）**
 - **エラーページをちゃんと作る。バリデーションも**
+
+##Study
+- **.mdの書き方**
+- **laravel - techacademyで基礎を勉強。その後詳しいことは作りながらドキュメントなどを見た**
+- **ES2015 - 普通のjsは勉強したことがあったが、ES2015については何も知らず、一から勉強。
+　　まずはES2015って何？というところからだった。
+　　vue.jsやtypescriptもやってみたかったが、まずは基礎からということで素のES2015を選択**
+- **bootstrap - ドキュメントを見るだけで簡単に部品が作れて便利。次は別のcssライブラリとか、もしくはsassを勉強してみたい**

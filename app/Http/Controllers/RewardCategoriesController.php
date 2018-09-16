@@ -63,6 +63,14 @@ class RewardCategoriesController extends Controller
 
       return redirect()->route('reward_categories.index');
     }
+
+    public function destroy($reward_id)
+    {
+      $reward_category = RewardCategory::find($reward_id);
+      $reward_category->delete();
+
+      return redirect()->route('reward_categories.index');
+    }
 /*バリデーションが難しいので後まわしにする
     private function validation($reward_category)
     {

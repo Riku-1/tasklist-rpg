@@ -34,11 +34,43 @@
           <td>
             {!! link_to_route('reward_categories.edit', '編集', ['id' => $reward_category->id]) !!}
           </td>
-          <td> <button type="button" name="button">－</button> </td>
+          <td>
+            <!--ここから削除ボタン-->
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
+              -
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    この報酬を削除しますか？
+                  </div>
+                  <div class="modal-footer">
+                    {!! Form::open(['route' => ['reward_categories.destroy', $reward_category->id], 'method' => 'delete']) !!}
+                      {!! Form::submit('削除する', ['class' => 'btn btn-danger']) !!}
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">いいえ</button>
+                    {!! Form::close() !!}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--ここまで削除ボタン-->
+
+          </td>
         </tr>
       @endforeach
     </tbody>
   </table>
+
+
 
   <div class="btn-group" role="group" aria-label="Basic example">
     <button type="button" class="btn btn-secondary">Left</button>

@@ -33,12 +33,7 @@ class RewardCategoriesController extends Controller
 
     public function store(Request $request)
     {
-      // レアリティは0~3の整数（S,A,B,Cの4種類）
-      $this->validate($request, [
-        'reward_name' => 'required|string|max:50',
-        'rarity' => 'integer|integer|gte:0|lte:3',
-      ]);
-
+    //  validation($request);
 
       $request->user()->rewardCategories()->create([
         'reward_name' => $request->reward_name,
@@ -47,4 +42,36 @@ class RewardCategoriesController extends Controller
 
       return redirect()->route('reward_categories.index');
     }
+
+    public function edit($reward_id)
+    {
+      $reward_category = RewardCategory::find($reward_id);
+
+      return view('reward_categories.edit', ['reward_category' => $reward_category]);
+    }
+
+    public function update(Request $request, $reward_id)
+    {
+      $reward_category = RewardCategory::find($reward_id);
+
+      //validation();
+
+      RewardCategory::find($reward_id)->update([
+        'reward_name' => $request->reward_name,
+        'rarity' => $request->rarity,
+      ]);
+
+      return redirect()->route('reward_categories.index');
+    }
+/*バリデーションが難しいので後まわしにする
+    private function validation($reward_category)
+    {
+      $this->validate($reward_category, [
+        'reward_name' => 'required|string|max:50',
+
+        // レアリティは0~3の整数（S,A,B,Cの4種類）
+        'rarity' => 'integer|integer|gte:0|lte:3',
+      ]);
+    }
+*/
 }

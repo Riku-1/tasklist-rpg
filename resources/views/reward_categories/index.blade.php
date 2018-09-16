@@ -32,7 +32,7 @@
             </div>
           </td>
           <td>
-            編集
+            {!! link_to_route('reward_categories.edit', '編集', ['id' => $reward_category->id]) !!}
           </td>
           <td> <button type="button" name="button">－</button> </td>
         </tr>

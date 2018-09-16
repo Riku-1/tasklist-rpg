@@ -67,3 +67,4 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ## Todo List
 - **アイテムや報酬設定にソート機能をつける**
 - **検索機能もつける（後回し）**
+- **エラーページをちゃんと作る。バリデーションも**

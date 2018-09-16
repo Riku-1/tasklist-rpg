@@ -64,10 +64,19 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
+## Others
+
+はじめは「Dream Come True RPG」という名前のアプリだったが、ご褒美設定があるこの方式だと外発的動機付けになるのでやめた。
+
+好きなことを頑張るための報酬は、やりがいそれ自体であってご褒美という形で外に理由を作るのはあまり好ましくない。
+
+そのためアプリの名前は「Tasklist RPG」に変えた。中身は変わっていないが、嫌なことを頑張るためのアプリということに。
+
 ## Todo List
 - **アイテムや報酬設定にソート機能をつける**
 - **検索機能もつける（後回し）**
 - **エラーページをちゃんと作る。バリデーションも**
+- **welcome.blade.phpは現在何も表示するものがないのでどうするか考える。いっそデバッグ専用ページにしてしまってもよいかもしれない**
 
 ##Study
 - **.mdの書き方**

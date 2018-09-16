@@ -9,7 +9,7 @@
   @else
     <div class="center jumbotron">
       <div class="text-center">
-        <h1>Dream Come True RPG</h1>
+        <h1>Tasklist RPG</h1>
         {!! link_to_route('signup.get', 'Sign up now!', null, ['class' => 'btn btn-lg btn-primary']) !!}
       </div>
     </div>

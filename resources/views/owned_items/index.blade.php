@@ -11,7 +11,7 @@
       <tr>
         <th scope="col">報酬</th>
         <th scope="col">所持数</th>
-        <th scope="col">有効無効切り替え</th>
+        <th scope="col">レアリティ</th>
         <th scope="col"></th>
         <th scope="col"></th>
       </tr>
@@ -20,25 +20,17 @@
       @foreach ($rewards as $reward)
         <tr>
           <td>{{ $reward->reward_name }}</td>
-          <td>{{ $reward->owned_quantity }}</td>
-          <td>
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-              <label class="btn btn-dark active">
-                <input type="radio" name="options" id="enabled" autocomplete="off" checked>有効
-              </label>
-              <label class="btn btn-dark">
-                <input type="radio" name="options" id="disabled" autocomplete="off">無効
-              </label>
-            </div>
-          </td>
+          <!--あとでセレクトボックスつけて好きな数減らせるようにする-->
+          <td>{{ $reward->num_owned }}</td>
+          <td>{{ $reward->convertRarityValueIntoChar() }}</td>
           <td>
             {!! link_to_route('rewards.edit', '編集', ['id' => $reward->id]) !!}
           </td>
           <td>
             <!--ここから削除ボタン-->
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
-              -
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+              消費する
             </button>
 
             <!-- Modal -->
@@ -51,11 +43,11 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    この報酬を削除しますか？
+                    消費しますか？
                   </div>
                   <div class="modal-footer">
-                    {!! Form::open(['route' => ['rewards.destroy', $reward->id], 'method' => 'delete']) !!}
-                      {!! Form::submit('削除する', ['class' => 'btn btn-danger']) !!}
+                    {!! Form::open(['route' => ['owned_items.update', $reward->id], 'method' => 'put']) !!}
+                      {!! Form::submit('増やす', ['class' => 'btn btn-primary']) !!}
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">いいえ</button>
                     {!! Form::close() !!}
                   </div>

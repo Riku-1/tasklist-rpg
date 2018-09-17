@@ -18,7 +18,7 @@ class CreateRewardsTable extends Migration
             $table->integer('user_id')->unsigned()->index;
             $table->string('reward_name', 50);
             $table->integer('rarity')->unsigned()->default(0);
-            $table->integer('owned_quantity')->unsigned()->default(0);
+            $table->integer('num_owned')->unsigned()->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

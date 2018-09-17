@@ -13,6 +13,15 @@ class Reward extends Model
       return $this->belongsTo(User::class);
     }
 
+    public function increaseNumOwned($num_increased)
+    {
+      //引数に負の値も可
+      $consumed_num_owned = $this->num_owned + $num_increased;
+      $this->num_owned = $consumed_num_owned;
+      $this->save();
+
+    }
+
     public function convertRarityValueIntoChar()
     {
       $rarity_value = $this->rarity;

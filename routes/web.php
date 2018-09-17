@@ -27,4 +27,5 @@ Route::group(['middleware' => 'auth'], function ()
 {
   //resourceのうちどのルートが必要か後で考えていらんやつは削る
   Route::resource('rewards', 'RewardsController');
+  Route::resource('owned_items', 'OwnedItemsController');
 });

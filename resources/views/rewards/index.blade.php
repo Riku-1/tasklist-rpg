@@ -3,7 +3,7 @@
 @section('content')
   {{-- ユーザーが設定している報酬を表示する --}}
   <div>
-    {!! link_to_route('reward_categories.create', '報酬の種類を追加') !!}
+    {!! link_to_route('rewards.create', '報酬の種類を追加') !!}
   </div>
 
   <table class="table table-striped">
@@ -17,10 +17,10 @@
       </tr>
     </thead>
     <tbody>
-      @foreach ($reward_categories as $reward_category)
+      @foreach ($rewards as $reward)
         <tr>
-          <td>{{ $reward_category->reward_name }}</td>
-          <td>{{ $reward_category->convertRarityValueIntoChar() }}</td>
+          <td>{{ $reward->reward_name }}</td>
+          <td>{{ $reward->convertRarityValueIntoChar() }}</td>
           <td>
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
               <label class="btn btn-dark active">
@@ -32,7 +32,7 @@
             </div>
           </td>
           <td>
-            {!! link_to_route('reward_categories.edit', '編集', ['id' => $reward_category->id]) !!}
+            {!! link_to_route('rewards.edit', '編集', ['id' => $reward->id]) !!}
           </td>
           <td>
             <!--ここから削除ボタン-->
@@ -54,7 +54,7 @@
                     この報酬を削除しますか？
                   </div>
                   <div class="modal-footer">
-                    {!! Form::open(['route' => ['reward_categories.destroy', $reward_category->id], 'method' => 'delete']) !!}
+                    {!! Form::open(['route' => ['rewards.destroy', $reward->id], 'method' => 'delete']) !!}
                       {!! Form::submit('削除する', ['class' => 'btn btn-danger']) !!}
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">いいえ</button>
                     {!! Form::close() !!}

@@ -28,8 +28,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function rewardCategories()
+    public function rewards()
     {
-      return $this->hasMany(RewardCategory::class);
+      return $this->hasMany(Reward::class);
     }
 }

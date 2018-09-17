@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-  {!! Form::model($reward_category, ['route' => ['reward_categories.update', $reward_category->id], 'method' => 'put']) !!}
+  {!! Form::open(['route' => 'rewards.store']) !!}
   <div class="form-group">
     {!! Form::label('reward_name', '報酬の名前') !!}
     {!! Form::text('reward_name', old('reward_name'), ['class' => 'form-control']) !!}
 
     {!! Form::label('rarity', 'レアリティ') !!}
-    {!! Form::select('rarity', ["C", "B", "A", "S"], $reward_category->rarity) !!}
+    {!! Form::select('rarity', ["C", "B", "A", "S"], old('rarity')) !!}
 
-    {!! Form::submit('設定更新') !!}
+    {!! Form::submit('報酬生成') !!}
   {!! Form::close() !!}
   </div>
 @endsection

@@ -26,5 +26,5 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 Route::group(['middleware' => 'auth'], function ()
 {
   //resourceのうちどのルートが必要か後で考えていらんやつは削る
-  Route::resource('reward_categories', 'RewardCategoriesController');
+  Route::resource('rewards', 'RewardsController');
 });

@@ -17,7 +17,6 @@ class CreateQuestsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index;
             $table->string('quest_name', 100);
-            $table->integer('level')->unsigned();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'QuestsController@index');
 
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
@@ -28,6 +26,7 @@ Route::group(['middleware' => 'auth'], function ()
   //resourceのうちどのルートが必要か後で考えていらんやつは削る
   Route::resource('rewards', 'RewardsController');
   Route::resource('owned_items', 'OwnedItemsController');
+  Route::resource('quests', 'QuestsController');
 
   Route::group(['prefix' => 'gacha'], function () {
     Route::get('main', 'GachaController@main')->name('gacha.main');

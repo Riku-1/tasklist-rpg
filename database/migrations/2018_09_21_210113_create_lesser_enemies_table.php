@@ -23,13 +23,12 @@ class CreateLesserEnemiesTable extends Migration
             //敵のレベル（タスクの難易度）を表す。難易度を可視化してあまり難しいタスクはさらに分割させることが狙い
             //レベルによって敵画像を変更する
             $table->integer('level')->unsigned();
-            //敵のHP（タスクの進行度）を表す。
+            //敵のHP（タスクの進行度）を表す。0以下なら撃破済み
             $table->integer('hp')->default(100);
             //nullを許可。デフォルト（null）報酬をガチャ券にするため
             $table->integer('reward_id')->unsigned()->nullable()->index;
             //敵の並びを管理
             $table->integer('order')->unsigned();
-            $table->boolean('is_alive')->default(true);
 
             $table->foreign('quest_id')->references('id')->on('quests');
             $table->foreign('reward_id')->references('id')->on('rewards');

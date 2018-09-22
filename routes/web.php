@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth'], function ()
   Route::resource('rewards', 'RewardsController');
   Route::resource('owned_items', 'OwnedItemsController');
   Route::resource('quests', 'QuestsController');
+  Route::resource('boss', 'BossController');
 
   Route::group(['prefix' => 'gacha'], function () {
     Route::get('main', 'GachaController@main')->name('gacha.main');

@@ -35,6 +35,9 @@ class QuestsController extends Controller
     $request->user()->quests()->create([
       'quest_name' => $request->quest_name,
       'quest_overview' => $request->quest_overview,
+      'enemy_name' => $request->enemy_name,
+      'enemy_overview' => $request->enemy_overview,
+      'level' => $request->level,
     ]);
 
     return redirect()->route('quests.index');

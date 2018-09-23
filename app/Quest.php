@@ -17,4 +17,9 @@ class Quest extends Model
   {
     return $this->belongsTo(Reward::class);
   }
+
+  public function lesser_enemies()
+  {
+    return $this->hasMany(LesserEnemy::class);
+  }
 }

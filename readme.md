@@ -73,7 +73,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 そのためアプリの名前は「Tasklist RPG」に変えた。中身は変わっていないが、嫌なことを頑張るためのアプリということに。
 
 ## Todo List
-- **RewardとQuestの多対多の関係を作る**
+- **横並びは素材用意するのに時間かかりそうやから縦に並べる。進行度バーつけてその上に勇者画像置こう**
+- **次はボス表示（quests/{$id}）を作成。道中とか作成**
 - **報酬削除のときにクエストに使われている報酬の場合は削除できないように**
 - **ボス設定機能**
 - **ザコ敵設定機能**

@@ -23,6 +23,13 @@ class QuestsController extends Controller
     }
   }
 
+  public function show($id)
+  {
+    $quest = Quest::find($id);
+
+    return view('quests.show', ['quest' => $quest]);
+  }
+
   public function create()
   {
     $quest = new Quest;

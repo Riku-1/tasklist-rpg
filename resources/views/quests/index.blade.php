@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-  {{-- ユーザーが設定している報酬を表示する --}}
   <div>
     {!! link_to_route('quests.create', 'クエストの種類を追加') !!}
   </div>
@@ -20,7 +19,7 @@
     <tbody>
       @foreach ($quests as $quest)
         <tr>
-          <td>{{ $quest->quest_name }}</td>
+          <td>{!! link_to_route('quests.show', $quest->quest_name, ['id' => $quest->id]) !!}</td>
           <!--自由記入欄なので文字数の処理を考える-->
           <td>{{ $quest->quest_overview }}</td>
           <td>30</td>

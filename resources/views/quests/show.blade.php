@@ -60,23 +60,4 @@
       @endforeach
     </tbody>
   </table>
-  <p>a</p>
-  <div class="">
-    <table id="quest_roadmap" class="table" border="1">
-      <tr>
-        <td class="col-md-1">
-          <img src="{{ secure_asset("image/player/normal.png") }}" alt="">
-        </td>
-        <td class="col-md-1">
-          <img src="{{ secure_asset("image/boss.png") }}" alt="">
-        </td>
-        <td class="col-md-1">
-          <img src="{{ secure_asset("image/boss.png") }}" alt="">
-        </td>
-        <td class="col-md-1">
-          <img src="{{ secure_asset("image/boss.png") }}" alt="">
-        </td>
-      </tr>
-    </table>
-  </div>
 @endsection

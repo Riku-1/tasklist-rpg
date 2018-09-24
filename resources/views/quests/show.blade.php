@@ -20,7 +20,7 @@
         <!--ここからtrが終わるまでボス情報-->
         <td>{{ $quest->enemy_name }}</td>
         <!--自由記入欄なので文字数の処理を考える-->
-        <td><img src="{{ secure_asset("image/boss1.png") }}" alt="Boss"></td>
+        <td><img src="{{ secure_asset("image/boss.png") }}" alt="Boss"></td>
         <td>{{ $quest->level }}</td>
         <td>{{ $quest->hp }}</td>
         <td>
@@ -40,7 +40,7 @@
       @foreach ($quest->lesser_enemies as $lesser_enemy)
         <td>{{ $lesser_enemy->enemy_name }}</td>
         <!--自由記入欄なので文字数の処理を考える-->
-        <td><img src="{{ secure_asset("image/boss1.png") }}" alt="Boss"></td>
+        <td><img src="{{ secure_asset("image/boss.png") }}" alt="Boss"></td>
         <td>{{ $lesser_enemy->level }}</td>
         <td>{{ $lesser_enemy->hp }}</td>
         <td>
@@ -60,4 +60,23 @@
       @endforeach
     </tbody>
   </table>
+  <p>a</p>
+  <div class="">
+    <table id="quest_roadmap" class="table" border="1">
+      <tr>
+        <td class="col-md-1">
+          <img src="{{ secure_asset("image/player/normal.png") }}" alt="">
+        </td>
+        <td class="col-md-1">
+          <img src="{{ secure_asset("image/boss.png") }}" alt="">
+        </td>
+        <td class="col-md-1">
+          <img src="{{ secure_asset("image/boss.png") }}" alt="">
+        </td>
+        <td class="col-md-1">
+          <img src="{{ secure_asset("image/boss.png") }}" alt="">
+        </td>
+      </tr>
+    </table>
+  </div>
 @endsection

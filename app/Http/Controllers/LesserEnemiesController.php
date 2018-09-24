@@ -90,8 +90,11 @@ class LesserEnemiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($lesser_enemy_id, $quest_id)
     {
-        //
+      $lesser_enemy = LesserEnemy::find($lesser_enemy_id);
+      $lesser_enemy->delete();
+
+      return redirect()->route('quests.show', ['quest_id' => $quest_id]);
     }
 }

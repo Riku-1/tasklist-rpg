@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function ()
   Route::group(['prefix' => 'monster'], function () {
     Route::get('{quest_id}/create', 'LesserEnemiesController@create')->name('lesser_enemies.create');
     Route::post('{quest_id}/store', 'LesserEnemiesController@store')->name('lesser_enemies.store');
+    Route::delete('{quest_id}/{lesser_enemy_id}', 'LesserEnemiesController@destroy')->name('lesser_enemies.destroy');
   });
 
   Route::group(['prefix' => 'gacha'], function () {

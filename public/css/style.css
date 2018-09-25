@@ -1,0 +1,8 @@
+#monster_table > tr {
+  height: 100px;
+  cursor: move;
+}
+
+#monster_table > #boss_tr {
+  cursor: auto;
+}

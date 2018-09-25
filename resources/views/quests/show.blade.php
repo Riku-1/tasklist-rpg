@@ -16,32 +16,7 @@
         <th scope="col"></th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        {{--ここからtrが終わるまでボス情報。
-        !!! ボスは$questから、ザコ敵は$lesser_enemyから引っ張ってきており、エラーの原因になりやすいので気をつけること
-        --}}
-        <td>{{ $quest->enemy_name }}</td>
-        <!--自由記入欄なので文字数の処理を考える-->
-        <td><img src="{{ secure_asset("image/boss.png") }}" alt="Boss"></td>
-        <td>{{ $quest->level }}</td>
-        <td>{{ $quest->hp }}</td>
-        <td>
-          @php
-            if ($quest->reward_id) {
-              $reward = $quest->reward();
-              echo $reward;
-            }
-            else {
-              // null（報酬の指定なし）なら報酬はガチャ券
-              echo "ガチャ券";
-            }
-          @endphp
-        </td>
-        <td>0</td>
-        {{--ボスは削除不可--}}
-        <td></td>
-      </tr>
+    <tbody id="monster_table">
       @foreach ($quest->lesser_enemies as $lesser_enemy)
         <td>{{ $lesser_enemy->enemy_name }}</td>
         <!--自由記入欄なので文字数の処理を考える-->
@@ -93,6 +68,47 @@
         </td>
       </tr>
       @endforeach
+      <tr id="boss_tr">
+        {{--ここからtrが終わるまでボス情報。
+        !!! ボスは$questから、ザコ敵は$lesser_enemyから引っ張ってきており、エラーの原因になりやすいので気をつけること
+        --}}
+        <td>{{ $quest->enemy_name }}</td>
+        <!--自由記入欄なので文字数の処理を考える-->
+        <td><img src="{{ secure_asset("image/boss.png") }}" alt="Boss"></td>
+        <td>{{ $quest->level }}</td>
+        <td>{{ $quest->hp }}</td>
+        <td>
+          @php
+            if ($quest->reward_id) {
+              $reward = $quest->reward();
+              echo $reward;
+            }
+            else {
+              // null（報酬の指定なし）なら報酬はガチャ券
+              echo "ガチャ券";
+            }
+          @endphp
+        </td>
+        <td>0</td>
+        {{--ボスは削除不可--}}
+        <td></td>
+      </tr>
     </tbody>
   </table>
+  <script>
+    $('#monster_table').sortable({
+      //bossは並び替えできない
+      items: '> tr:not(#boss_tr)',
+      //ドラッグ＆ドロップのときにhelperの高さが変わらないようにする
+      placeholder: '#monster_table > tr',
+      forcePlaceholderSize: true,
+      tolerance: 'pointer',
+      });
+    $('#monster_table').disableSelection();
+
+    $('#monster_table').bind('sortstop', function (e, ui) {
+    // ソートが完了したら実行される。
+    })
+
+  </script>
 @endsection

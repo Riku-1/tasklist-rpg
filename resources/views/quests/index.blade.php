@@ -2,7 +2,7 @@
 
 @section('content')
   <div>
-    {!! link_to_route('quests.create', 'クエストの種類を追加') !!}
+    {!! link_to_route('quests.create', 'クエストを追加') !!}
   </div>
 
   <table class="table table-striped">

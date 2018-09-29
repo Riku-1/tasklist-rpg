@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\LesserEnemy;
+use App\Monster;
 use App\Quest;
 
 
-class LesserEnemiesController extends Controller
+class MonstersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,9 +26,9 @@ class LesserEnemiesController extends Controller
      */
     public function create($quest_id)
     {
-      $lesser_enemy = new LesserEnemy;
+      $monster = new Monster;
 
-      return view('lesser_enemies.create', ['lesser_enemy' => $lesser_enemy, 'quest_id' => $quest_id]);
+      return view('monsters.create', ['monster' => $monster, 'quest_id' => $quest_id]);
     }
 
     /**
@@ -40,9 +40,9 @@ class LesserEnemiesController extends Controller
     public function store(Request $request, $quest_id)
     {
       $quest = Quest::find($quest_id);
-      $quest->lesser_enemies()->create([
-        'enemy_name' => $request->enemy_name,
-        'enemy_overview' => $request->enemy_overview,
+      $quest->monsters()->create([
+        'monster_name' => $request->monster_name,
+        'monster_overview' => $request->monster_overview,
         'level' => $request->level,
         'order' => $request->order,
       ]);
@@ -90,10 +90,10 @@ class LesserEnemiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($lesser_enemy_id, $quest_id)
+    public function destroy($monster_id, $quest_id)
     {
-      $lesser_enemy = LesserEnemy::find($lesser_enemy_id);
-      $lesser_enemy->delete();
+      $monster = Monster::find($monster_id);
+      $monster->delete();
 
       return redirect()->route('quests.show', ['quest_id' => $quest_id]);
     }

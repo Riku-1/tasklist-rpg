@@ -73,6 +73,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 そのためアプリの名前は「Tasklist RPG」に変えた。中身は変わっていないが、嫌なことを頑張るためのアプリということに。
 
 ## Todo List
+- **並び替えはできたので値を取得でorderに入れる**
 - **横並びは素材用意するのに時間かかりそうやから縦に並べる。進行度バーつけてその上に勇者画像置こう**
 - **次はボス表示（quests/{$id}）を作成。道中とか作成**
 - **報酬削除のときにクエストに使われている報酬の場合は削除できないように**
@@ -93,7 +94,5 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ##Study
 - **.mdの書き方**
 - **laravel - techacademyで基礎を勉強。その後詳しいことは作りながらドキュメントなどを見た**
-- **ES2015 - 普通のjsは勉強したことがあったが、ES2015については何も知らず、一から勉強。
-　　まずはES2015って何？というところからだった。
-　　vue.jsやtypescriptもやってみたかったが、まずは基礎からということで素のES2015を選択**
+- **jquery - vue.jsやtypescriptを使う方法もあったが、早く公開できるものを作りたかったためコスト面から選択**
 - **bootstrap - ドキュメントを見るだけで簡単に部品が作れて便利。次は別のcssライブラリとか、もしくはsassを勉強してみたい**

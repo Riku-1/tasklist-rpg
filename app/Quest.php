@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Quest extends Model
 {
-  protected $fillable = ['user_id', 'quest_name', 'quest_overview', 'enemy_name', 'enemy_overview', 'level', 'reward_id'];
+  protected $fillable = ['user_id', 'quest_name', 'quest_overview', 'reward_id'];
 
   public function user()
   {
@@ -18,8 +18,8 @@ class Quest extends Model
     return $this->belongsTo(Reward::class);
   }
 
-  public function lesser_enemies()
+  public function monsters()
   {
-    return $this->hasMany(LesserEnemy::class);
+    return $this->hasMany(Monster::class);
   }
 }

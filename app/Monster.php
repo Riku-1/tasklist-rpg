@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class LesserEnemy extends Model
+class Monster extends Model
 {
-  protected $fillable = ['quest_id', 'enemy_name', 'enemy_overview', 'level', 'reward_id', 'order'];
+  protected $fillable = ['quest_id', 'monster_name', 'monster_overview', 'level', 'reward_id', 'order'];
 
   public function quest()
   {

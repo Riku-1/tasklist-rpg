@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLesserEnemiesTable extends Migration
+class CreateMonstersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateLesserEnemiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('lesser_enemies', function (Blueprint $table) {
-          //ザコ敵テーブル。ボスと違ってクエストに対して一対多の関係
+        Schema::create('monsters', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->integer('quest_id')->unsigned()->index;
-            $table->string('enemy_name', 100);
-            $table->string('enemy_overview')->nullable();
+            $table->string('monster_name', 100);
+            $table->string('monster_overview')->nullable();
             //敵のレベル（タスクの難易度）を表す。難易度を可視化してあまり難しいタスクはさらに分割させることが狙い
             //レベルによって敵画像を変更する
             $table->integer('level')->unsigned();
@@ -42,6 +41,6 @@ class CreateLesserEnemiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lesser_enemies');
+        Schema::dropIfExists('monsters');
     }
 }

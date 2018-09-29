@@ -27,12 +27,12 @@ Route::group(['middleware' => 'auth'], function ()
   Route::resource('rewards', 'RewardsController');
   Route::resource('owned_items', 'OwnedItemsController');
   Route::resource('quests', 'QuestsController');
-  Route::resource('monster', 'LesserEnemiesController');
+  Route::resource('monster', 'MonstersController');
 
   Route::group(['prefix' => 'monster'], function () {
-    Route::get('{quest_id}/create', 'LesserEnemiesController@create')->name('lesser_enemies.create');
-    Route::post('{quest_id}/store', 'LesserEnemiesController@store')->name('lesser_enemies.store');
-    Route::delete('{quest_id}/{lesser_enemy_id}', 'LesserEnemiesController@destroy')->name('lesser_enemies.destroy');
+    Route::get('{quest_id}/create', 'MonstersController@create')->name('monsters.create');
+    Route::post('{quest_id}/store', 'MonstersController@store')->name('monsters.store');
+    Route::delete('{quest_id}/{monster_id}', 'MonstersController@destroy')->name('monsters.destroy');
   });
 
   Route::group(['prefix' => 'gacha'], function () {

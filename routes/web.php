@@ -26,8 +26,10 @@ Route::group(['middleware' => 'auth'], function ()
   //resourceのうちどのルートが必要か後で考えていらんやつは削る
   Route::resource('rewards', 'RewardsController');
   Route::resource('owned_items', 'OwnedItemsController');
-  Route::resource('quests', 'QuestsController');
   Route::resource('monster', 'MonstersController');
+
+  Route::resource('quests', 'QuestsController');
+  Route::post('quests/save_order', 'QuestsController@saveOrder');
 
   Route::group(['prefix' => 'monster'], function () {
     Route::get('{quest_id}/create', 'MonstersController@create')->name('monsters.create');

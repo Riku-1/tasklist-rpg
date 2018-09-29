@@ -12,10 +12,6 @@
     {!! Form::label('level', 'レベル') !!}
     {!! Form::select('level', [1, 2, 3, 4, 5], old('rarity')) !!}
 
-    <!--orderは後々ドラッグ＆ドロップとセレクト選択で入れ替えの二種類で-->
-    {!! Form::label('order', '順番') !!}
-    {!! Form::select('order', [1, 2, 3, 4, 5], old('order')) !!}
-
     {!! Form::submit('モンスター生成') !!}
   {!! Form::close() !!}
   </div>

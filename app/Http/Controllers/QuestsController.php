@@ -42,11 +42,30 @@ class QuestsController extends Controller
     $request->user()->quests()->create([
       'quest_name' => $request->quest_name,
       'quest_overview' => $request->quest_overview,
-      'enemy_name' => $request->enemy_name,
-      'enemy_overview' => $request->enemy_overview,
-      'level' => $request->level,
     ]);
 
     return redirect()->route('quests.index');
+  }
+
+  /**
+   * [sort description] sortableで並び替えたモンスターの並び順をDBに保存する
+   * @param  Request $request {'quest_id', 'array_orders'}
+   *  [description] arrya_ordersには旧orderの番号が新しい並び順で入っている
+   *  ex)[4,1,2,3]
+   *  この場合だと元々4番目だったモンスターを1番に持ってきたことになる
+   * @return [type] void [description] ajax処理でDB保存を行うため値を返さない
+   */
+  public function saveOrder(Request $request)
+  {
+    $quest = Quest::find($request->quest_id);
+    $monsters = $quest->monsters()->orderBy('order', 'asc')->paginate(10);
+
+    for ($i=0; $i < count($monsters); $i++) {
+      //旧orderからMonsterインスタンスを引っ張ってきて新orderを代入する
+      $monster = $monsters[$request->array_orders[$i]];
+      //+1はなくても動くが、SQLのindexが1からなので一応それに合わせる
+      $monster->order = $i + 1;
+      $monster->save();
+    }
   }
 }

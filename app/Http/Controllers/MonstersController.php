@@ -40,11 +40,15 @@ class MonstersController extends Controller
     public function store(Request $request, $quest_id)
     {
       $quest = Quest::find($quest_id);
+      $last_order = $quest->getLastOrder();
+      //新しいモンスターは最後尾に追加する
+      $order = ++$last_order;
+
       $quest->monsters()->create([
         'monster_name' => $request->monster_name,
         'monster_overview' => $request->monster_overview,
         'level' => $request->level,
-        'order' => $request->order,
+        'order' => $order,
       ]);
 
       return redirect()->route('quests.show', ['quest_id' => $quest_id]);

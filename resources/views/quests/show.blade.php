@@ -17,8 +17,13 @@
       </tr>
     </thead>
     <tbody id="monster_table">
-      @foreach ($quest->monsters as $monster)
-        <td>{{ $monster->enemy_name }}</td>
+      @php
+        //モンスターに番号を振るための変数。
+        //$monster->orderで引っ張ってくるのも可能だが、変な値が入っていた場合に矯正できるように表示順に新しく番号を振る。
+        $i = 0;
+      @endphp
+      @foreach ($quest->monsters()->orderBy('order', 'asc')->paginate(10); as $monster)
+        <td>{{ $monster->monster_name }}</td>
         <!--自由記入欄なので文字数の処理を考える-->
         <td><img src="{{ secure_asset("image/boss.png") }}" alt="Boss"></td>
         <td>{{ $monster->level }}</td>
@@ -35,7 +40,8 @@
             }
           @endphp
         </td>
-        <td>0</td>
+        <!--ソート機能のためのセル-->
+        <td class="order">{{ $i }},</td>
         <td>
           <!--ここから削除ボタン-->
           <!-- Button trigger modal -->
@@ -67,6 +73,9 @@
           <!--ここまで削除ボタン-->
         </td>
       </tr>
+      @php
+        ++$i;
+      @endphp
       @endforeach
     </tbody>
   </table>
@@ -76,12 +85,23 @@
       placeholder: '#monster_table > tr',
       forcePlaceholderSize: true,
       tolerance: 'pointer',
-      });
-    $('#monster_table').disableSelection();
+      update: function () {
+        //並び替えられた順にorderを引っ張ってきて配列を作る
+        var orders = $(this).find('[class="order"]').text();
+        var separator = ',';
+        var array_orders = orders.split(separator);
+        array_orders.pop()
 
-    $('#monster_table').bind('sortstop', function (e, ui) {
-    // ソートが完了したら実行される。
+        $.post('save_order', {
+          'array_orders[]': array_orders,
+          'quest_id': {{ $quest->id }},
+          //CSRF対策
+          '_token': '{{ csrf_token() }}',
+        })
+      }
     })
 
+    $('#monster_table').disableSelection();
   </script>
+  <p id="log"></p>
 @endsection

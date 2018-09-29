@@ -22,4 +22,21 @@ class Quest extends Model
   {
     return $this->hasMany(Monster::class);
   }
+
+  /**
+   * クエストに所属する最後尾のモンスターのorderを取得する
+   * @return [type] int [description] クエスト内モンスターのorder最大値
+   */
+  public function getLastOrder()
+  {
+    $last_monster = $this->monsters()->orderBy('order', 'desc')->first();
+    if ($last_monster) {
+      $last_order = $last_monster->order;
+    }else {
+      //クエストにモンスターが存在しない場合は0を返す
+      $last_order = 0;
+    }
+
+    return $last_order;
+  }
 }

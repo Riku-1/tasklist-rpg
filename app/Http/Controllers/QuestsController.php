@@ -48,7 +48,7 @@ class QuestsController extends Controller
   }
 
   /**
-   * [sort description] sortableで並び替えたモンスターの並び順をDBに保存する
+   * sortableで並び替えたモンスターの並び順をDBに保存する
    * @param  Request $request {'quest_id', 'array_orders'}
    *  [description] arrya_ordersには旧orderの番号が新しい並び順で入っている
    *  ex)[4,1,2,3]

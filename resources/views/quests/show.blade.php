@@ -23,10 +23,11 @@
         $i = 0;
       @endphp
       @foreach ($quest->monsters()->orderBy('order', 'asc')->paginate(10); as $monster)
-        <td>{{ $monster->monster_name }}</td>
-        <!--自由記入欄なので文字数の処理を考える-->
-        <td><img src="{{ secure_asset("image/boss.png") }}" alt="Boss"></td>
-        <td>{{ $monster->level }}</td>
+
+        {{--自由記入欄なので文字数の処理を考える--}}<td>{{ $monster->monster_name }}</td>
+        <td><img src="{{ secure_asset($monster->choiceImageFromLevel()) }}" alt="Boss"></td>
+        {{--levelには表示より1小さい値が入ってるので修正して表示--}}
+        <td>{{ ++$monster->level }}</td>
         <td>{{ $monster->hp }}</td>
         <td>
           @php

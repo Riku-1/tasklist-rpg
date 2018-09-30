@@ -42,7 +42,7 @@
           @endphp
         </td>
         <!--ソート機能のためのセル-->
-        <td class="order" id="{{ $i }}">{{ $i }},</td>
+        <td class="order">{{ $i }},</td>
         <td>
           <!--ここから削除ボタン-->
           <!-- Button trigger modal -->
@@ -101,12 +101,6 @@
         })
 
         //データベース保存が終わってからorderセルの番号を書き直す。これをやっておかないと再度並べ替えたとき順番がめちゃくちゃになる
-        .always(function () {
-          $('#monster_table').find('[class="order"]').each(function (i) {
-            //区切り文字,が必要
-            $(this).text(i + ",");
-          })
-        })
       }
     })
 

@@ -68,4 +68,14 @@ class QuestsController extends Controller
       $monster->save();
     }
   }
+
+  public function saveHp(Request $request)
+  {
+    $quest = Quest::find($request->quest_id);
+    $monsters = $quest->monsters()->orderBy('order', 'asc')->paginate(10);
+    $monster = $monsters[$request->monster_num];
+
+    $monster->hp = $request->hp;
+    $monster->save();
+  }
 }

@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth'], function ()
 
   Route::resource('quests', 'QuestsController');
   Route::post('quests/save_order', 'QuestsController@saveOrder');
+  Route::post('quests/save_hp', 'QuestsController@saveHp');
 
   Route::group(['prefix' => 'monster'], function () {
     Route::get('{quest_id}/create', 'MonstersController@create')->name('monsters.create');

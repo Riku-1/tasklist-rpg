@@ -10,7 +10,6 @@
       <tr>
         <th scope="col">冒険の書</th>
         <th scope="col">概要</th>
-        <th scope="col">難易度</th>
         <th scope="col">進行度</th>
         <th scope="col"></th>
         <th scope="col"></th>
@@ -22,7 +21,6 @@
           <td>{!! link_to_route('quests.show', $quest->quest_name, ['id' => $quest->id]) !!}</td>
           <!--自由記入欄なので文字数の処理を考える-->
           <td>{{ $quest->quest_overview }}</td>
-          <td>30</td>
           <td></td>
           <td>
 

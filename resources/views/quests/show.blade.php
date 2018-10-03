@@ -29,7 +29,7 @@
         <tr>
           {{--levelには表示より1小さい値が入ってるので修正して表示--}}
           <td>{{ $monster->level + 1 }}</td>
-          <td><img src="{{ secure_asset($monster->choiceImageFromLevel()) }}" alt="モンスター"></td>
+          <td><img src="{{ secure_asset($monster->choiceImageFromLevel()) }}" alt="モンスター" id="monster_img"></td>
           {{--自由記入欄なので文字数の処理を考える--}}
           <td>{{ $monster->monster_name }}</td>
           <td>

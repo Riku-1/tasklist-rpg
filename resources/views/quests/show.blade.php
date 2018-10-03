@@ -28,7 +28,7 @@
       @foreach ($quest->monsters()->orderBy('order', 'asc')->paginate(10); as $monster)
         {{--levelには表示より1小さい値が入ってるので修正して表示--}}
         <td>{{ $monster->level + 1 }}</td>
-        <td><img src="{{ secure_asset($monster->choiceImageFromLevel()) }}" alt="Boss"></td>
+        <td><img src="{{ secure_asset($monster->choiceImageFromLevel()) }}" alt="モンスター"></td>
         {{--自由記入欄なので文字数の処理を考える--}}
         <td>{{ $monster->monster_name }}</td>
         <td>
@@ -90,57 +90,7 @@
       @endforeach
     </tbody>
   </table>
-  <script>
-    {{--ここから並び替え処理--}}
-    $('#monster_table').sortable({
-      //ドラッグ＆ドロップのときにhelperの高さが変わらないようにする
-      placeholder: '#monster_table > tr',
-      forcePlaceholderSize: true,
-      tolerance: 'pointer',
-      update: function () {
-        //並び替えられた順にorderを引っ張ってきて配列を作る
-        var orders = $(this).find('[class="order"]').text();
-        var separator = ',';
-        var array_orders = orders.split(separator);
-        array_orders.pop()
-
-        $.post('save_order', {
-          'array_orders[]': array_orders,
-          'quest_id': {{ $quest->id }},
-          //CSRF対策
-          '_token': '{{ csrf_token() }}',
-        })
-
-        //データベース保存が終わってからorderセルの番号を書き直す。これをやっておかないと再度並べ替えたとき順番がめちゃくちゃになる
-        .always(function () {
-          $('#monster_table').find('[class="order"]').each(function (i) {
-            //区切り文字,が必要
-            $(this).text(i + ",");
-          })
-        })
-      }
-    })
-
-    $('#monster_table').disableSelection();
-    {{--ここまで並び替え処理--}}
-
-    {{--ここからHPのスライダー処理--}}
-      $('[id=hp_slider]').change(function () {
-        {{--labelの書き換え--}}
-        var hp = $(this).val();
-        $(this).prev().text(hp + "/100")
-
-        {{--AjaxでデータをDBに保存--}}
-        $.post('save_hp', {
-          'quest_id': {{ $quest->id }},
-          'hp' : hp,
-          'monster_num':  $('[id=hp_slider]').index(this),
-          //CSRF対策
-          '_token': '{{ csrf_token() }}',
-        })
-
-      })
-    {{--ここまでHPのスライダー処理--}}
-  </script>
+  @include('script/sortable')
+  @include('script/hp_slider')
   <p id="log"></p>
 @endsection

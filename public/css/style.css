@@ -1,4 +1,6 @@
-#monster_table > tr {
+/*なぜかクラスにするとheightが効かない
+jQueryで設定してもダメなのでとりあえずこのままidで*/
+#sortable_table > tr {
   height: 100px;
   cursor: move;
 }

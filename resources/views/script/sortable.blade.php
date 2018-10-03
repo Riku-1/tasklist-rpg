@@ -1,7 +1,12 @@
+{{--jQueryのsortableを利用して値をデータベースに保存する
+ソートしたいテーブルのtbodyのidにsortable_tableに設定すること--}}
 <script type="text/javascript">
-  $('#monster_table').sortable({
+  $('#sortable_table > tr').css('cursor','move');
+  $('#sortable_table > tr').height(100);
+
+  $('#sortable_table').sortable({
     //ドラッグ＆ドロップのときにhelperの高さが変わらないようにする
-    placeholder: '#monster_table > tr',
+    placeholder: '#sortable_table > tr',
     forcePlaceholderSize: true,
     tolerance: 'pointer',
     update: function () {
@@ -20,7 +25,7 @@
 
       //データベース保存が終わってからorderセルの番号を書き直す。これをやっておかないと再度並べ替えたとき順番がめちゃくちゃになる
       .always(function () {
-        $('#monster_table').find('[class="order"]').each(function (i) {
+        $('#sortable_table').find('[class="order"]').each(function (i) {
           //区切り文字,が必要
           $(this).text(i + ",");
         })
@@ -28,5 +33,5 @@
     }
   })
 
-  $('#monster_table').disableSelection();
+  $('#sortable_table').disableSelection();
 </script>

@@ -2,7 +2,11 @@
 
 @section('content')
   @if (Auth::check())
-    {!! link_to_route('gacha.result', 'ガチャを回す') !!}
+    @if ($num_gacha_ticket == 0)
+      {{ 'ガチャチケがありません' }}
+    @else
+      {!! link_to_route('gacha.result', 'ガチャを回す') !!}
+    @endif
   @else
     <div class="center jumbotron">
       <div class="text-center">
@@ -11,4 +15,11 @@
       </div>
     </div>
   @endif
+  <script type="text/javascript">
+    $('button').click(function () {
+      if (true) {
+
+      }
+    })
+  </script>
 @endsection

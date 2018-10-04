@@ -10,7 +10,8 @@ class GachaController extends Controller
     public function main()
     {
       //後々所持チケット枚数を引っ張ってきて表示する。今はページ表示するだけ
-      return view('gacha.main');
+      $num_gacha_ticket = \Auth::user()->gacha_ticket;
+      return view('gacha.main', ['num_gacha_ticket' => $num_gacha_ticket ]);
     }
 
     public function result()

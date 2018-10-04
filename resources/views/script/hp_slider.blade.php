@@ -1,4 +1,13 @@
 <script>
+  $(function(){
+    $('tr').each(function (i) {
+      let hp = $('[id=hp_slider]').eq(i).val();
+      let monster_num = i;
+
+      changeMonsterDisplay(hp, monster_num);
+    })
+  });
+
   $('[id=hp_slider]').change(function () {
     var hp = $(this).val();
     var monster_num = $('[id=hp_slider]').index(this);

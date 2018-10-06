@@ -11,19 +11,20 @@
     tolerance: 'pointer',
     update: function () {
       //並び替えられた順にorderを引っ張ってきて配列を作る
-      var orders = $(this).find('[class="order"]').text();
-      var separator = ',';
-      var array_orders = orders.split(separator);
-      array_orders.pop()
+      let orders = $(this).find('[class="order"]').text();
+      let separator = ',';
+      let array_orders = orders.split(separator);
+      array_orders.pop();
 
-      $.post('save_order', {
+      //Ajax処理。データベースにorderを保存する
+      $.post('save_monster_order', {
         'array_orders[]': array_orders,
         'quest_id': {{ $quest->id }},
         //CSRF対策
         '_token': '{{ csrf_token() }}',
       })
 
-      //データベース保存が終わってからorderセルの番号を書き直す。これをやっておかないと再度並べ替えたとき順番がめちゃくちゃになる
+      {{--データベース保存が終わってからorderセルの番号を書き直す。これをやっておかないと再度並べ替えたとき順番がめちゃくちゃになる--}}
       .always(function () {
         $('#sortable_table').find('[class="order"]').each(function (i) {
           //区切り文字,が必要

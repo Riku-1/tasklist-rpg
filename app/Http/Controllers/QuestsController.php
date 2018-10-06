@@ -55,7 +55,7 @@ class QuestsController extends Controller
    *  この場合だと元々4番目だったモンスターを1番に持ってきたことになる
    * @return [type] void [description] ajax処理でDB保存を行うため値を返さない
    */
-  public function saveOrder(Request $request)
+  public function saveMonsterOrder(Request $request)
   {
     $quest = Quest::find($request->quest_id);
     $monsters = $quest->monsters()->orderBy('order', 'asc')->paginate(10);
@@ -69,9 +69,15 @@ class QuestsController extends Controller
     }
   }
 
-  public function saveHp(Request $request)
+  /**
+   * 引数hpを指定されたモンスターのhpカラムに保存する
+   * @param  Request $request {'hp', 'quest'}
+   * @return [type] void [description] ajax処理でDB保存を行うため値を返さない
+   */
+  public function saveHpIntoDB(Request $request)
   {
     $quest = Quest::find($request->quest_id);
+    //多分paginateしてるとモンスターの数が10位上だと問題が発生するので後で直す
     $monsters = $quest->monsters()->orderBy('order', 'asc')->paginate(10);
     $monster = $monsters[$request->monster_num];
 

@@ -29,14 +29,16 @@ Route::group(['middleware' => 'auth'], function ()
   Route::resource('monster', 'MonstersController');
 
   Route::resource('quests', 'QuestsController');
-  Route::post('quests/save_order', 'QuestsController@saveOrder');
-  Route::post('quests/save_hp', 'QuestsController@saveHp');
+  Route::post('quests/save_monster_order', 'QuestsController@saveMonsterOrder');
+  Route::post('quests/save_hp', 'QuestsController@saveHpIntoDB');
+  Route::delete('quests/{quest_id}/{order}/destroy', 'MonstersController@destroy');
 
   Route::group(['prefix' => 'monster'], function () {
-    Route::get('{quest_id}/create', 'MonstersController@create')->name('monsters.create');
     Route::post('{quest_id}/store', 'MonstersController@store')->name('monsters.store');
     Route::delete('{quest_id}/{monster_id}', 'MonstersController@destroy')->name('monsters.destroy');
   });
+  Route::get('quests/{quest_id}/monster_create', 'MonstersController@create')->name('monsters.create');
+
 
   Route::group(['prefix' => 'gacha'], function () {
     Route::get('main', 'GachaController@main')->name('gacha.main');

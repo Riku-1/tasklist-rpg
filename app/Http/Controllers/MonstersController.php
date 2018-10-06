@@ -94,11 +94,22 @@ class MonstersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($monster_id, $quest_id)
+    public function destroy($quest_id, $order)
     {
-      $monster = Monster::find($monster_id);
+      logger($order);
+      logger("ががががっが");
+      $quest = Quest::find($quest_id);
+      $monsters = $quest->monsters()->paginate(10);
+      $monster_num_in_quest = $monsters->count();
+      logger($monster_num_in_quest);
+      $monster = $monsters->where('order', $order)->first();
       $monster->delete();
 
-      return redirect()->route('quests.show', ['quest_id' => $quest_id]);
+      for ($i=$order+1; $i <= $monster_num_in_quest ; $i++) {
+        $monster = $monsters->where('order', $i)->first();
+        $monster->order = $i - 1;
+        $monster->save();
+      }
+
     }
 }

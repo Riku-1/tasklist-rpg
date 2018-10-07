@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <h1>画像のインパクトが強すぎてタスクネームがわかりにくい。</h1>
+  <h1 id="test">画像のインパクトが強すぎてタスクネームがわかりにくい。</h1>
   <h1>文字を目立たせるか画像を小さくするべき</h1>
 
   <!--自分以外のクエストは見えなくする-->
@@ -57,10 +57,9 @@
           <td>
             <!--ここから削除ボタン-->
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-danger">
+            <button type="button" class="btn btn-danger" id="deleteButton">
               -
             </button>
-
           </td>
         </tr>
       @php
@@ -69,6 +68,26 @@
       @endforeach
     </tbody>
   </table>
+  {{--modalは一つだけ作り押されたbuttonによってjQueryで書き換える--}}
+  <!-- Modal -->
+  <div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          このモンスターを削除しますか？
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+          <button type="button" class="btn btn-danger" id="finalConfirmDelete">削除する</button>
+        </div>
+      </div>
+    </div>
+  </div>
   @include('script/sortable')
   @include('script/hp_slider')
   @include('script/delete')

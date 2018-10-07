@@ -89,22 +89,20 @@ class MonstersController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * 指定されたモンスターを削除し、その後削除した分ずれたorderを再設定する
+     * @param  [type] int $quest_id [description] モンスターが所属するクエストのid
+     * @param  [type] int $order    [description] そのクエスト内でのモンスターの順番
+     * @return [type] void [description] Ajax処理でDB保存を行うため値を返さない
      */
     public function destroy($quest_id, $order)
     {
-      logger($order);
-      logger("ががががっが");
       $quest = Quest::find($quest_id);
       $monsters = $quest->monsters()->paginate(10);
       $monster_num_in_quest = $monsters->count();
-      logger($monster_num_in_quest);
       $monster = $monsters->where('order', $order)->first();
       $monster->delete();
 
+      //消去した分orderに抜けが出るので修正する
       for ($i=$order+1; $i <= $monster_num_in_quest ; $i++) {
         $monster = $monsters->where('order', $i)->first();
         $monster->order = $i - 1;

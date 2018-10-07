@@ -21,7 +21,7 @@
           <td>{!! link_to_route('quests.show', $quest->quest_name, ['id' => $quest->id]) !!}</td>
           <!--自由記入欄なので文字数の処理を考える-->
           <td>{{ $quest->quest_overview }}</td>
-          <td></td>
+          <td>{{ $quest->calcQuestProgress() }}</td>
           <td>
 
           </td>

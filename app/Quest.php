@@ -39,4 +39,23 @@ class Quest extends Model
 
     return $last_order;
   }
+
+  /**
+   * クエストの進行度を計算する。
+   * 進行度 = 全モンスターの残りHP / 全モンスターの最大HP
+   * @return [type] string $progress [description]
+   */
+  public function calcQuestProgress()
+  {
+    $monsters = $this->monsters()->paginate(10);
+    $all_hp = 0;
+    $remaing_hp = 0;
+    foreach ($monsters as $monster) {
+      $all_hp += 100;
+      $remaing_hp += $monster->hp;
+    }
+
+    $progress = $remaing_hp . '/' . $all_hp;
+    return $progress;
+  }
 }

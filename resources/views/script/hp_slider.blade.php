@@ -31,8 +31,8 @@
   /**
    * モンスターが死んでいるか生きているかで表示を変更する
    * @param
-   * hp
-   * monster_num: 何番目の要素が操作されているか
+   * int hp
+   * int monster_num: 何番目の要素が操作されているか
    */
   function changeMonsterDisplay(hp, monster_num) {
     if (hp == 0) {

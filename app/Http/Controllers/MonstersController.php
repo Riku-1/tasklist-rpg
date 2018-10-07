@@ -48,6 +48,7 @@ class MonstersController extends Controller
         'monster_name' => $request->monster_name,
         'monster_overview' => $request->monster_overview,
         'level' => $request->level,
+        'reward_id' => $request->reward,
         'order' => $order,
       ]);
 

@@ -43,12 +43,12 @@
           <td>
             @php
               if ($monster->reward_id) {
-                $reward = $quest->reward();
-                echo $reward;
+                $reward = $monster->reward;
+                echo $reward->reward_name;
               }
               else {
                 // null（報酬の指定なし）なら報酬はガチャ券
-                echo "ガチャ券";
+                echo "";
               }
             @endphp
           </td>

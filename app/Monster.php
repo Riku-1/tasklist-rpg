@@ -21,7 +21,7 @@ class Monster extends Model
   /**
    * モンスターのレベルに応じて表示する画像パスを選択する
    * @param  [type] int $monster_level
-   * @return [type] string:url
+   * @return [type] string:image_path
    */
   public function choiceImageFromLevel()
   {

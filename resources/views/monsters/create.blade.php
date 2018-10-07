@@ -13,6 +13,19 @@
     {!! Form::label('level', 'レベル') !!}
     {!! Form::select('level', [1, 2, 3, 4, 5], old('rarity')) !!}
 
+    {{--報酬セレクトボックス。報酬設定で設定した報酬を呼び出して表示している
+        --}}
+    @php
+      $rewards = Auth::user()->rewards;
+    @endphp
+    {!! Form::label('reward', '報酬') !!}
+    <select name="reward">
+      <option value="0">ガチャチケ(デフォルト)</option>
+      @foreach ($rewards as $reward)
+        <option value={{ $reward->id }}>{{ $reward->reward_name }}</option>
+      @endforeach
+    </select>
+
     {!! Form::submit('モンスター生成') !!}
   {!! Form::close() !!}
   </div>

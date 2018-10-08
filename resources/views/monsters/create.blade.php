@@ -17,10 +17,11 @@
         --}}
     @php
       $rewards = Auth::user()->rewards;
+      $reward_gacha = App\Reward::first();
     @endphp
     {!! Form::label('reward', '報酬') !!}
     <select name="reward">
-      <option value="0">ガチャチケ(デフォルト)</option>
+      <option value="{{ $reward_gacha->id }}">{{ $reward_gacha->reward_name }}</option>
       @foreach ($rewards as $reward)
         <option value={{ $reward->id }}>{{ $reward->reward_name }}</option>
       @endforeach

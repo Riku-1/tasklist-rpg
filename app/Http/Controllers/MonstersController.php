@@ -98,7 +98,7 @@ class MonstersController extends Controller
     public function destroy($quest_id, $order)
     {
       $quest = Quest::find($quest_id);
-      $monsters = $quest->monsters()->paginate(10);
+      $monsters = $quest->monsters()->paginate(100);
       $monster_num_in_quest = $monsters->count();
       $monster = $monsters->where('order', $order)->first();
       $monster->delete();

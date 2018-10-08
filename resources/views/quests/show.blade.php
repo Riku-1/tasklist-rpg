@@ -25,7 +25,7 @@
         //$monster->orderで引っ張ってくるのも可能だが、変な値が入っていた場合に矯正できるように表示順に新しく番号を振る。
         $i = 0;
       @endphp
-      @foreach ($quest->monsters()->orderBy('order', 'asc')->paginate(10); as $monster)
+      @foreach ($quest->monsters()->orderBy('order', 'asc')->paginate(100); as $monster)
         <tr>
           {{--levelには表示より1小さい値が入ってるので修正して表示--}}
           <td>{{ $monster->level + 1 }}</td>

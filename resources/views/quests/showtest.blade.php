@@ -22,7 +22,7 @@
         //$monster->orderで引っ張ってくるのも可能だが、変な値が入っていた場合に矯正できるように表示順に新しく番号を振る。
         $i = 0;
       @endphp
-      @foreach ($quest->monsters()->orderBy('order', 'asc')->paginate(10); as $monster)
+      @foreach ($quest->monsters()->orderBy('order', 'asc')->paginate(100); as $monster)
 
         {{--自由記入欄なので文字数の処理を考える--}}<td>{{ $monster->monster_name }}</td>
         <td><img src="{{ secure_asset($monster->choiceImageFromLevel()) }}" alt="Boss"></td>

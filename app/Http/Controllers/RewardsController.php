@@ -12,7 +12,7 @@ class RewardsController extends Controller
       $data = [];
       if (\Auth::check()) {
         $user = \Auth::user();
-        $rewards = $user->rewards()->orderBy('created_at', 'desc')->paginate(10);
+        $rewards = $user->rewards()->orderBy('created_at', 'desc')->paginate(100);
 
         $data = [
           'user' => $user,

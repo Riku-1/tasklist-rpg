@@ -12,7 +12,7 @@ class QuestsController extends Controller
     $data = [];
     if (\Auth::check()) {
       $user = \Auth::user();
-      $quests = $user->quests()->orderBy('updated_at', 'desc')->paginate(10);
+      $quests = $user->quests()->orderBy('updated_at', 'desc')->paginate(100);
       $data = [
         'user' => $user,
         'quests' => $quests,
@@ -58,7 +58,7 @@ class QuestsController extends Controller
   public function saveMonsterOrder(Request $request)
   {
     $quest = Quest::find($request->quest_id);
-    $monsters = $quest->monsters()->orderBy('order', 'asc')->paginate(10);
+    $monsters = $quest->monsters()->orderBy('order', 'asc')->paginate(100);
 
     for ($i=0; $i < count($monsters); $i++) {
       //旧orderからMonsterインスタンスを引っ張ってきて新orderを代入する
@@ -78,7 +78,7 @@ class QuestsController extends Controller
   {
     $quest = Quest::find($request->quest_id);
     //多分paginateしてるとモンスターの数が10位上だと問題が発生するので後で直す
-    $monsters = $quest->monsters()->orderBy('order', 'asc')->paginate(10);
+    $monsters = $quest->monsters()->orderBy('order', 'asc')->paginate(100);
     $monster = $monsters[$request->monster_num];
 
     $monster->hp = $request->hp;

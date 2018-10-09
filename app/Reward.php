@@ -13,11 +13,6 @@ class Reward extends Model
       return $this->belongsTo(User::class);
     }
 
-    public function quest()
-    {
-      return $this->belongsTo(Quest::class);
-    }
-
     public function increaseNumOwned($num_increased)
     {
       //引数に負の値も可

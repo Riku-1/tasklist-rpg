@@ -24,13 +24,10 @@ class CreateMonstersTable extends Migration
             $table->integer('level')->unsigned()->default(1);
             //敵のHP（タスクの進行度）を表す。0以下なら撃破済み
             $table->integer('hp')->default(100);
-            //nullを許可。デフォルト（null）報酬をガチャ券にするため
-            $table->integer('reward_id')->unsigned()->nullable()->index;
             //敵の並びを管理
             $table->integer('order')->unsigned();
 
             $table->foreign('quest_id')->references('id')->on('quests');
-            $table->foreign('reward_id')->references('id')->on('rewards');
         });
     }
 

@@ -21,10 +21,6 @@ class CreateQuestsTable extends Migration
             $table->string('quest_overview')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');
-
-            //nullを許可。Monsterと違いこちらはnullで報酬なしとする
-            $table->integer('reward_id')->unsigned()->nullable()->index;
-            $table->foreign('reward_id')->references('id')->on('rewards');
         });
     }
 

@@ -14,7 +14,6 @@
         <th scope="col">画像</th>
         <th scope="col">名前</th>
         <th scope="col">HP(進行度)</th>
-        <th scope="col">報酬</th>
         <th scope="col">順番</th>
         <th scope="col"></th>
       </tr>
@@ -39,18 +38,6 @@
                 <input type="range" class="form-control-range" id="hp_slider" value="{{ $monster->hp }}" step="10">
               </div>
             </form>
-          </td>
-          <td>
-            @php
-              if ($monster->reward_id) {
-                $reward = $monster->reward;
-                echo $reward->reward_name;
-              }
-              else {
-                // null（報酬の指定なし）なら報酬はガチャ券
-                echo "";
-              }
-            @endphp
           </td>
           <!--ソート機能のためのセル-->
           <td class="order" id="{{ $i }}">{{ $i }},</td>

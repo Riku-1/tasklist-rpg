@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  {!! Form::model(['route' => ['monsters.store', $quest_id]]) !!}
+  {!! Form::open(['route' => ['monsters.store', $quest_id]]) !!}
   <div class="form-group">
     {!! Form::label('monster_name', '名前') !!}
     {!! Form::text('monster_name', old('monster_name'), ['class' => 'form-control']) !!}

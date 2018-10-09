@@ -33,11 +33,11 @@ Route::group(['middleware' => 'auth'], function ()
   Route::delete('quests/{quest_id}/{order}/destroy', 'MonstersController@destroy');
 
   Route::group(['prefix' => 'quests'], function () {
-    Route::post('{quest_id}/store', 'MonstersController@store')->name('monsters.store');
+    Route::post('{quest_id}/monster_store', 'MonstersController@store')->name('monsters.store');
     Route::delete('{quest_id}/{monster_id}', 'MonstersController@destroy')->name('monsters.destroy');
     Route::get('{quest_id}/monster_create', 'MonstersController@create')->name('monsters.create');
-    Route::put('{quest_id}/{monster_id}', 'MonstersController@update')->name('monsters.update');
-    Route::get('{quest_id}/{monster_id}', 'MonstersController@edit')->name('monsters.edit');
+    Route::put('{quest_id}/{monster_id}/monster_update', 'MonstersController@update')->name('monsters.update');
+    Route::get('{quest_id}/{monster_id}/monster_edit', 'MonstersController@edit')->name('monsters.edit');
   });
 
 

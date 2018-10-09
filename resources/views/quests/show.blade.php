@@ -13,6 +13,7 @@
         <th scope="col">レベル</th>
         <th scope="col">画像</th>
         <th scope="col">名前</th>
+        <th scope="col"></th>
         <th scope="col">HP(進行度)</th>
         <th scope="col">順番</th>
         <th scope="col"></th>
@@ -48,6 +49,7 @@
               -
             </button>
           </td>
+          <td>{!! link_to_route('monsters.edit', '編集', ['quest_id' => $quest->id,'monster_id' => $monster->id]) !!}
         </tr>
       @php
         ++$i;

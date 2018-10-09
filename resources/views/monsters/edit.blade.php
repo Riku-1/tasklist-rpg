@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  {!! Form::model(['route' => ['monsters.store', $quest_id]]) !!}
+  {!! Form::model($monster, ['route' => ['monsters.update', $quest_id, $monster->id], 'method' => 'put']) !!}
   <div class="form-group">
     {!! Form::label('monster_name', '名前') !!}
     {!! Form::text('monster_name', old('monster_name'), ['class' => 'form-control']) !!}
@@ -13,7 +13,7 @@
     {!! Form::label('level', 'レベル') !!}
     {!! Form::select('level', [1, 2, 3, 4, 5], old('rarity')) !!}
 
-    {!! Form::submit('モンスター生成') !!}
+    {!! Form::submit('編集完了') !!}
   {!! Form::close() !!}
   </div>
 @endsection

@@ -68,24 +68,34 @@ class MonstersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $quest_id  最終的にクエストページにリダイレクトするのでそのためだけに使用
+     * @param  int  $monster_id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($quest_id, $monster_id)
     {
-        //
+      $monster = Monster::find($monster_id);
+
+      return view('monsters.edit', ['quest_id' => $quest_id, 'monster' => $monster]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $quest_id  最終的にクエストページにリダイレクトするのでそのためだけに使用
+     * @param  int  $monster_id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $quest_id, $monster_id)
     {
-        //
+      $monster = Monster::find($monster_id);
+      $monster->update([
+        'monster_name' => $request->monster_name,
+        'monster_overview' => $request->monster_overview,
+        'level' => $request->level,
+      ]);
+      return redirect()->route('quests.show', ['quest_id' => $quest_id]);
     }
 
     /**

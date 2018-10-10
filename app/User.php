@@ -38,4 +38,20 @@ class User extends Authenticatable
       return $this->hasMany(Quest::class);
     }
 
+    /**
+     * ガチャチケを引数分増やす
+     * @param  [type] $change_num_of_ticket
+     * @return [description]
+     */
+    public function increaseTicket($change_num_of_ticket)
+    {
+      $gacha_ticket = $this->gacha_ticket;
+      $gacha_ticket += $change_num_of_ticket;
+      //ガチャチケの枚数は0以下にならない
+      if ($gacha_ticket < 0) {
+        $gacha_ticket = 0;
+      }
+      $this->gacha_ticket = $gacha_ticket;
+      $this->save();
+    }
 }

@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth'], function ()
 
   Route::resource('quests', 'QuestsController');
   Route::post('quests/save_monster_order', 'QuestsController@saveMonsterOrder');
-  Route::post('quests/save_hp', 'QuestsController@saveHpIntoDB');
+  Route::post('quests/save_hp', 'QuestsController@saveHpAndChangeTicketNum');
   Route::delete('quests/{quest_id}/{order}/destroy', 'MonstersController@destroy');
 
   Route::group(['prefix' => 'quests'], function () {

@@ -70,11 +70,12 @@ class QuestsController extends Controller
   }
 
   /**
-   * 引数hpを指定されたモンスターのhpカラムに保存する
-   * @param  Request $request {'hp', 'quest'}
+   * 引数hpを指定されたモンスターのhpカラムに保存する。
+   * また、引数 change_num_of_ticketの分だけユーザーが所持するガチャチケを増やす
+   * @param  Request $request {'hp', 'quest', 'change_num_of_ticket'}
    * @return [type] void [description] ajax処理でDB保存を行うため値を返さない
    */
-  public function saveHpIntoDB(Request $request)
+  public function saveHpAndChangeTicketNum(Request $request)
   {
     $quest = Quest::find($request->quest_id);
     //多分paginateしてるとモンスターの数が10位上だと問題が発生するので後で直す
@@ -83,5 +84,8 @@ class QuestsController extends Controller
 
     $monster->hp = $request->hp;
     $monster->save();
+
+    //チケットを増やす
+    \Auth::user()->increaseTicket($request->change_num_of_ticket);
   }
 }

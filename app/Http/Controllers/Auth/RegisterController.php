@@ -69,4 +69,20 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
-}
+
+    /**
+     * ユーザー登録後に呼び出される処理。報酬、クエスト、モンスターそれぞれのサンプルを初期データとして作成する。
+     * RegistersUsersクラスのメソッドをオーバーライドしている
+     * @param  IlluminateHttpRequest $request [description]
+     * @param  [type]                $user    [description]
+     * @return [type]                         [description] 指定されたページにリダイレクトする
+     */
+    protected function registered(\Illuminate\Http\Request $request, $user)
+    {
+      $user->createSampleRewards();
+      $user->createSampleQuests();
+      $user->createSampleMonsters();
+
+      return redirect()->intended($this->redirectPath());
+    }
+  }

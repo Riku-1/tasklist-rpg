@@ -19,17 +19,18 @@ class GachaController extends Controller
       //現在はすべての報酬が同じ確率で出現する仕様。後々レアリティで出現率変更
       //現在は一回ずつしか回せないが後々複数回一気に回せるようにする
       $rewards = [];
-      $times_gacha = 1;
+      $gacha_times = 1;
+      $user = \Auth::user();
       if (\Auth::check()) {
-        $user = \Auth::user();
-
-        for ($i=0; $i < $times_gacha; $i++) {
+        for ($i=0; $i < $gacha_times; $i++) {
           //設定された報酬の中からランダムに抜き出す
           $reward = $user->rewards()->inRandomOrder()->first();
           $reward->increaseNumOwned(1);
           $rewards[] = $reward;
         };
 
+        $user->gacha_ticket += -1;
+        $user->save();
         return view('gacha.result', ['rewards' => $rewards]);
       }
     }

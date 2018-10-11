@@ -17,7 +17,7 @@ class GachaController extends Controller
     public function result()
     {
       //現在はすべての報酬が同じ確率で出現する仕様。後々レアリティで出現率変更
-      //現在は一回ずつしか回せないが後々複数回一気に回せるようにする
+      //後でガチャを回してランダムに報酬を取得する部分だけ関数に切り出す
       $rewards = [];
       $gacha_times = 1;
       $user = \Auth::user();

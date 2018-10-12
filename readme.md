@@ -1,7 +1,7 @@
 # Tasklist RPG
 
 ## アプリURL
-http~  
+http://tasklist-rpg.herokuapp.com/
 Herokuを使用
 
 ## このアプリについて

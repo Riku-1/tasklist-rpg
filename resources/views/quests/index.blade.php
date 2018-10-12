@@ -26,12 +26,11 @@
           <td>
             <!--ここから削除ボタン-->
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete">
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete{{ $quest->id }}">
               -
             </button>
-
             <!-- Modal -->
-            <div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteTitle" aria-hidden="true">
+            <div class="modal fade" id="confirmDelete{{ $quest->id }}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteTitle{{ $quest->id }}" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -40,7 +39,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    このクエストを削除しますか？
+                    この報酬を削除しますか？
                   </div>
                   <div class="modal-footer">
                     {!! Form::open(['route' => ['quests.destroy', $quest->id], 'method' => 'delete']) !!}
@@ -52,7 +51,6 @@
               </div>
             </div>
             <!--ここまで削除ボタン-->
-
           </td>
         </tr>
       @endforeach

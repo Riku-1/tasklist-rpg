@@ -79,5 +79,5 @@
   </div>
   @include('script/sortable')
   @include('script/hp_slider')
-  @include('script/delete')
+  @include('script/delete_button_with_sortable')
 @endsection

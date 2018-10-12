@@ -37,12 +37,11 @@
           <td>
             <!--ここから削除ボタン-->
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete">
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete{{ $reward->id }}">
               -
             </button>
-
             <!-- Modal -->
-            <div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteTitle" aria-hidden="true">
+            <div class="modal fade" id="confirmDelete{{ $reward->id }}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteTitle{{ $reward->id }}" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -63,7 +62,6 @@
               </div>
             </div>
             <!--ここまで削除ボタン-->
-
           </td>
         </tr>
       @endforeach

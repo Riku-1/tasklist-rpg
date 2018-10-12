@@ -47,6 +47,23 @@ class QuestsController extends Controller
     return redirect()->route('quests.index');
   }
 
+  public function edit($id)
+  {
+    $quest = Quest::find($id);
+
+    return view('quests.edit', ['quest' => $quest]);
+  }
+
+  public function update(Request $request, $id)
+  {
+    $quest = Quest::find($id);
+    $quest->update([
+      'quest_name' => $request->quest_name,
+      'quest_overview' => $request->quest_overview,
+    ]);
+    return redirect()->route('quests.index');
+  }
+
   /**
    * sortableで並び替えたモンスターの並び順をDBに保存する
    * @param  Request $request {'quest_id', 'array_orders'}

@@ -11,8 +11,8 @@
         <th scope="col">冒険の書</th>
         <th scope="col">概要</th>
         <th scope="col">進行度</th>
-        <th scope="col"></th>
-        <th scope="col"></th>
+        <th scope="col">編集</th>
+        <th scope="col">削除</th>
       </tr>
     </thead>
     <tbody>
@@ -22,9 +22,7 @@
           <!--自由記入欄なので文字数の処理を考える-->
           <td>{{ $quest->quest_overview }}</td>
           <td>{{ $quest->calcQuestProgress() }}</td>
-          <td>
-
-          </td>
+          <td>{!! link_to_route('quests.edit', '編集', ['id' => $quest->id]) !!}</td>
           <td>
           </td>
         </tr>

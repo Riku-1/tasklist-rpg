@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-  <h1 id="test">画像のインパクトが強すぎてタスクネームがわかりにくい。</h1>
-  <h1>文字を目立たせるか画像を小さくするべき</h1>
 
   <h2>クエスト：{{ $quest->quest_name }}</h2>
   <h3>概要：{{ $quest->quest_overview }}</h3>
@@ -16,8 +14,8 @@
         <th scope="col">画像</th>
         <th scope="col">名前</th>
         <th scope="col">HP(進行度)</th>
-        <th scope="col">順番</th>
-        <th scope="col">is_alive</th>
+        <th scope="col" style="display:none">順番</th>
+        <th scope="col" style="display:none">is_alive</th>
         <th scope="col">削除</th>
         <th scope="col">編集</th>
       </tr>
@@ -44,8 +42,8 @@
             </form>
           </td>
           <!--ソート機能のためのセル-->
-          <td class="order" id="{{ $i }}">{{ $i }},</td>
-          <td class="is_alive">1</td>
+          <td class="order" id="{{ $i }}" style="display:none">{{ $i }},</td>
+          <td class="is_alive" style="display:none">1</td>
           <td>
             <!--ここから削除ボタン-->
             <!-- Button trigger modal -->
@@ -84,5 +82,4 @@
   @include('script/sortable')
   @include('script/hp_slider')
   @include('script/delete')
-  <p id="log"></p>
 @endsection

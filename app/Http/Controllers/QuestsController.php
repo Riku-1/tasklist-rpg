@@ -64,6 +64,19 @@ class QuestsController extends Controller
     return redirect()->route('quests.index');
   }
 
+  public function destroy($id)
+  {
+    $quest = Quest::find($id);
+    $monsters = $quest->monsters;
+    foreach ($monsters as $monster) {
+      $monster->delete();
+    }
+    $quest->delete();
+
+    return redirect()->route('quests.index');
+
+  }
+
   /**
    * sortableで並び替えたモンスターの並び順をDBに保存する
    * @param  Request $request {'quest_id', 'array_orders'}

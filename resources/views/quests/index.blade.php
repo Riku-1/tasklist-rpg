@@ -24,17 +24,38 @@
           <td>{{ $quest->calcQuestProgress() }}</td>
           <td>{!! link_to_route('quests.edit', '編集', ['id' => $quest->id]) !!}</td>
           <td>
+            <!--ここから削除ボタン-->
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete">
+              -
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    このクエストを削除しますか？
+                  </div>
+                  <div class="modal-footer">
+                    {!! Form::open(['route' => ['quests.destroy', $quest->id], 'method' => 'delete']) !!}
+                      {!! Form::submit('削除する', ['class' => 'btn btn-danger']) !!}
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">いいえ</button>
+                    {!! Form::close() !!}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--ここまで削除ボタン-->
+
           </td>
         </tr>
       @endforeach
     </tbody>
   </table>
-
-
-
-  <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-secondary">Left</button>
-    <button type="button" class="btn btn-secondary">Middle</button>
-    <button type="button" class="btn btn-secondary">Right</button>
-  </div>
 @endsection

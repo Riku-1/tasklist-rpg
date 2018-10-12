@@ -45,8 +45,6 @@
           <td class="order" id="{{ $i }}" style="display:none">{{ $i }},</td>
           <td class="is_alive" style="display:none">1</td>
           <td>
-            <!--ここから削除ボタン-->
-            <!-- Button trigger modal -->
             <button type="button" class="btn btn-danger" id="deleteButton">
               -
             </button>

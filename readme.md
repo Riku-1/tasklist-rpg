@@ -2,11 +2,10 @@
 
 ## アプリURL
 http://tasklist-rpg.herokuapp.com/
-Herokuを使用
 
 ## このアプリについて
 目標達成のためのロードマップをRPG風に整理するためのアプリです。  
-Laravel勉強のために作りました。完成度は○月×日時点で8割くらいです。
+Laravel勉強のために作りました。完成度は2018年10月13日時点で9割くらいです。
 
 ## 製作期間
 １カ月
@@ -15,10 +14,10 @@ Laravel勉強のために作りました。完成度は○月×日時点で8割�
 * vagrant + homestead
 
 ## 使用技術
-* Laravel + php
-* MySQL
-* CSS: bootstrap
-* JS: jQuery
+* Laravel 5.7.3 + php 7.7.9-1
+* MySQL 14.14
+* CSS: bootstrap 3.37
+* JS: jQuery 1.12.4
 
 
 ## 使い方

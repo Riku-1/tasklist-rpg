@@ -42,7 +42,7 @@ class Quest extends Model
    */
   public function calcQuestProgress()
   {
-    $monsters = $this->monsters()->paginate(100);
+    $monsters = $this->monsters;
     $all_hp = 0;
     $remaing_hp = 0;
     foreach ($monsters as $monster) {

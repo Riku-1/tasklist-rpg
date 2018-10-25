@@ -5,6 +5,7 @@
     @if ($num_gacha_ticket == 0)
       {{ 'ガチャチケがありません' }}
     @else
+      <p>{{ 'ガチャ券を' . $num_gacha_ticket . "枚所持しています" }}</p>
       {!! link_to_route('gacha.result', 'ガチャを回す') !!}
     @endif
   @else

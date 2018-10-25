@@ -13,13 +13,19 @@ class Reward extends Model
       return $this->belongsTo(User::class);
     }
 
+    /**
+     * 所持しているアイテムを$num_increased増やす。$num_increasedを負にすれば減少
+     * @param  [type] $num_increased [description] アイテム増加数
+     * @return [type] $num_owned [description] 増加後のアイテム所持数
+     */
     public function increaseNumOwned($num_increased)
     {
-      //引数に負の値も可
-      $consumed_num_owned = $this->num_owned + $num_increased;
-      $this->num_owned = $consumed_num_owned;
-      $this->save();
-
+      $num_owned = $this->num_owned + $num_increased;
+      //$num_ownedの値は負を許可しない。0以下の場合は0に直す
+      if ($num_owned < 0) {
+        $num_owned = 0;
+      }
+      return $num_owned;
     }
 
     public function convertRarityValueIntoChar()
@@ -43,7 +49,6 @@ class Reward extends Model
           break;
 
         default:
-          // エラー処理がわからないので暫定措置
           return 'レアリティはS,A,B,Cのみしか許可されていません';
           break;
       }

@@ -24,13 +24,18 @@ class OwnedItemsController extends Controller
     }
   }
 
+  /**
+   * アイテムを消費する（数を1減らす）
+   * @param  Request $request   [description]
+   * @param  [type]  $reward_id [description]
+   */
   public function update(Request $request, $reward_id)
   {
-    //今は1増やすだけ。0以下にならないようにvalidationする。
     $reward = Reward::find($reward_id);
-    $num_consumption =  -1;
+    $CONSUMPTION_NUM = 1;
 
-    $reward->increaseNumOwned(-$num_consumption);
+    $reward->num_owned = $reward->increaseNumOwned(-$CONSUMPTION_NUM);
+    $reward->save();
 
     return redirect()->route('owned_items.index');
   }

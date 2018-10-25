@@ -39,6 +39,9 @@ class QuestsController extends Controller
 
   public function store(Request $request)
   {
+    $this->validate($request, [
+      'quest_name' => 'required',
+    ]);
     $request->user()->quests()->create([
       'quest_name' => $request->quest_name,
       'quest_overview' => $request->quest_overview,
@@ -56,6 +59,9 @@ class QuestsController extends Controller
 
   public function update(Request $request, $id)
   {
+    $this->validate($request, [
+      'quest_name' => 'required',
+    ]);
     $quest = Quest::find($id);
     $quest->update([
       'quest_name' => $request->quest_name,

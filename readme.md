@@ -1,5 +1,9 @@
 # Tasklist RPG
 
+**途中までサブアカウントのShisoumeの名前でコミットしてしますが同一人物です。  
+途中からRiku-1のアカウントに切り替えました**
+
+
 ## アプリURL
 http://tasklist-rpg.herokuapp.com/
 

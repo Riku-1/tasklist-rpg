@@ -39,6 +39,10 @@ class MonstersController extends Controller
      */
     public function store(Request $request, $quest_id)
     {
+      $this->validate($request, [
+        'monster_name' => 'required',
+        'level' =>'required',
+      ]);
       $quest = Quest::find($quest_id);
       $last_order = $quest->getLastOrder();
       //新しいモンスターは最後尾に追加する
@@ -89,6 +93,10 @@ class MonstersController extends Controller
      */
     public function update(Request $request, $quest_id, $monster_id)
     {
+      $this->validate($request, [
+        'monster_name' => 'required',
+        'level' =>'required',
+      ]);
       $monster = Monster::find($monster_id);
       $monster->update([
         'monster_name' => $request->monster_name,

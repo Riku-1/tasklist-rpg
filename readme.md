@@ -1,5 +1,9 @@
 # Tasklist RPG
 
+**途中までShisoumeの名前でコミットしています。  
+このコミットを最後にRiku-1のアカウントに切り替える予定（GitHubに草を生やしたいので）**
+
+
 ## アプリURL
 http://tasklist-rpg.herokuapp.com/
 

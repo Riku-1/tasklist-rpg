@@ -33,8 +33,10 @@ class RewardsController extends Controller
 
     public function store(Request $request)
     {
-    //  validation($request);
-
+      $this->validate($request, [
+        'reward_name' => 'required',
+        'rarity' =>'required',
+      ]);
       $request->user()->rewards()->create([
         'reward_name' => $request->reward_name,
         'rarity' => $request->rarity,
@@ -52,9 +54,11 @@ class RewardsController extends Controller
 
     public function update(Request $request, $reward_id)
     {
+      $this->validate($request, [
+        'reward_name' => 'required',
+        'rarity' =>'required',
+      ]);
       $reward = Reward::find($reward_id);
-
-      //validation();
 
       Reward::find($reward_id)->update([
         'reward_name' => $request->reward_name,

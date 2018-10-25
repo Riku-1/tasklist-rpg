@@ -47,7 +47,7 @@
                   </div>
                   <div class="modal-footer">
                     {!! Form::open(['route' => ['owned_items.update', $reward->id], 'method' => 'put']) !!}
-                      {!! Form::submit('増やす', ['class' => 'btn btn-primary']) !!}
+                      {!! Form::submit('はい', ['class' => 'btn btn-primary']) !!}
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">いいえ</button>
                     {!! Form::close() !!}
                   </div>
@@ -61,12 +61,4 @@
       @endforeach
     </tbody>
   </table>
-
-
-
-  <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-secondary">Left</button>
-    <button type="button" class="btn btn-secondary">Middle</button>
-    <button type="button" class="btn btn-secondary">Right</button>
-  </div>
 @endsection

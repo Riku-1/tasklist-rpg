@@ -25,7 +25,8 @@ class GachaController extends Controller
         for ($i=0; $i < $gacha_times; $i++) {
           //設定された報酬の中からランダムに抜き出す
           $reward = $user->rewards()->inRandomOrder()->first();
-          $reward->increaseNumOwned(1);
+          $reward->num_owned = $reward->increaseNumOwned(1);
+          $reward->save();
           $rewards[] = $reward;
         };
 

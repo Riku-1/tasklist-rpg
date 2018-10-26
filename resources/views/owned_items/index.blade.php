@@ -13,7 +13,6 @@
         <th scope="col">所持数</th>
         <th scope="col">レアリティ</th>
         <th scope="col"></th>
-        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -23,9 +22,6 @@
           <!--あとでセレクトボックスつけて好きな数減らせるようにする-->
           <td>{{ $reward->num_owned }}</td>
           <td>{{ $reward->convertRarityValueIntoChar() }}</td>
-          <td>
-            {!! link_to_route('rewards.edit', '編集', ['id' => $reward->id]) !!}
-          </td>
           <td>
             <!--ここから削除ボタン-->
             <!-- Button trigger modal -->

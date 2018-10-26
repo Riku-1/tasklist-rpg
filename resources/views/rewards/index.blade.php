@@ -10,8 +10,8 @@
     <thead>
       <tr>
         <th scope="col">報酬</th>
+        <th scope="col">所持数</th>
         <th scope="col">レアリティ</th>
-        <th scope="col">有効無効切り替え</th>
         <th scope="col"></th>
         <th scope="col"></th>
       </tr>
@@ -20,17 +20,8 @@
       @foreach ($rewards as $reward)
         <tr>
           <td>{{ $reward->reward_name }}</td>
+          <td>{{ $reward->num_owned }}</td>
           <td>{{ $reward->convertRarityValueIntoChar() }}</td>
-          <td>
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-              <label class="btn btn-dark active">
-                <input type="radio" name="options" id="enabled" autocomplete="off" checked>有効
-              </label>
-              <label class="btn btn-dark">
-                <input type="radio" name="options" id="disabled" autocomplete="off">無効
-              </label>
-            </div>
-          </td>
           <td>
             {!! link_to_route('rewards.edit', '編集', ['id' => $reward->id]) !!}
           </td>

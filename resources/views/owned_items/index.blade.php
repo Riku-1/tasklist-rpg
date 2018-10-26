@@ -2,9 +2,6 @@
 
 @section('content')
   {{-- ユーザーが設定している報酬を表示する --}}
-  <div>
-    {!! link_to_route('rewards.create', '報酬の種類を追加') !!}
-  </div>
 
   <table class="table table-striped">
     <thead>
